@@ -7,6 +7,5 @@ export default defineConfig({
   server: {
     port: 3000
   },
-  // If hosting on GitHub Pages under a subfolder, e.g. https://<username>.github.io/<repo-name>/
-  // base: '/<repo-name>/',
+  base: '/my-portfolio/',
 });
