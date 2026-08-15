@@ -1,0 +1,135 @@
+{
+  "name": "Raunak Agrahari",
+  "phone": "8828056288",
+  "email": "raunakagrahari15@gmail.com",
+  "github": "raunakagrahari",
+  "linkedin": "raunak-agrahari",
+  "summary": "Backend developer with more than 4+ years of experience in Node.js. Skilled in creating APIs, troubleshooting issues, improving performance, and working with teams to deliver reliable solutions.",
+  "skills": {
+    "languages": ["JavaScript", "TypeScript", "SQL", "Python"],
+    "frontend": ["React.js", "HTML5", "CSS3"],
+    "backend": ["Node.js", "Express.js", "Fastify", "NestJS", "REST APIs", "Microservices Architecture"],
+    "databases": ["MySQL", "PostgreSQL", "MongoDB", "DynamoDB", "Redis", "Sequelize", "Mongoose"],
+    "cloudDevOps": ["AWS (Lambda, SQS, S3, EC2, RDS, CloudWatch)", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Git"],
+    "security": ["JWT", "OAuth 2.0", "Payment Gateway Integrations (Razorpay, Cashfree, PayU, PayPal, PayGlocal)"],
+    "tools": ["Jest", "Mocha", "Postman", "Swagger", "NPM"]
+  },
+  "experience": [
+    {
+      "company": "Aza Fashions Private Limited",
+      "role": "Software Engineer",
+      "period": "April 2023 – Current",
+      "highlights": [
+        "Built a scalable Gift Card feature integrated with multiple payment gateways (Razorpay, Cashfree, PayU, PayPal, PayGlocal), driving an 11% rise in gift card usage and 4.36% increase in order volume.",
+        "Designed a rule-based promo/coupon engine supporting 10+ combinable discount types (designer-specific, timer, freebie, region, category, platform, employee, clearance, user-type) with a Coupon Management Dashboard for country/device targeting – lifting coupon usage by 7% and sales by 5%.",
+        "Architected a dynamic tier-based loyalty system with real-time points calculation and automated customer classification, improving engagement by 9% and retention by 7%.",
+        "Re-engineered the checkout microservice (Aza V2) using Redis caching, AWS SQS, and AWS Lambda for parallel cart/address/payment processing, cutting API response time by 40% and checkout time by 30%.",
+        "Built order placement logic across 5 payment gateways with client-independent success confirmation, automated LimeChat order notifications, CS-assisted order creation, and an order monitoring system to auto-flag transaction inconsistencies.",
+        "Developed core checkout services – expected delivery date, GST verification, TaxJar, address caching, and courier-priority logic via ClickPost integration (incl. partial-COD and COD-courier payment routing) – optimized for high-traffic, low-latency response.",
+        "Built a real-time lead dashboard surfacing live user page/session data with behavioral tags (high-value, repeat, exclusive) and ticket-size mapping to support sales conversion tracking.",
+        "Integrated MoEngage, LimeChat, and CleverChat for customer engagement automation, and shipped Region-wise Landing Pages, Trunkshow, Store Appointment Booking, and Referral Program modules, alongside DB optimization scripts that cut data retrieval time by 20%."
+      ]
+    },
+    {
+      "company": "Accubits Technologies Inc.",
+      "role": "Software Engineer Intern",
+      "period": "June 2022 – Feb 2023",
+      "highlights": [
+        "Designed scalable APIs and a transaction dashboard for 50,000+ users, and built Zoho API integrations (Books, Finance, Inventory, Billing) automating 15+ workflows across 5+ departments – improving processing speed by 30%.",
+        "Built a secure user authentication system (Node.js, Express, JWT, OAuth 2.0) and resolved 50+ critical bugs using Git-based workflows, improving reliability and usability."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Computer Applications (M.C.A.)",
+      "institution": "Kalinga Institute of Industrial Technology, Bhubaneswar",
+      "period": "2023–2025",
+      "details": "CGPA: 9.47 / 10"
+    },
+    {
+      "degree": "Bachelor of Science (B.Sc.) in Computer Science",
+      "institution": "R.J. College, Mumbai University",
+      "period": "2019–2022",
+      "details": "CGPA: 9.96 / 10"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Scalable Gift Card Integration",
+      "category": "backend",
+      "context": "Node.js / Express / Payment Gateways / Retries",
+      "tagline": "Built a robust Gift Card service integrated with multiple payment gateways like Razorpay, Cashfree, PayU, and PayPal.",
+      "description": "Designed and implemented a scalable Gift Card module featuring resilient retry logic and automatic error handling for failed transactions. Integrated with multiple payment gateways (Razorpay, Cashfree, PayU, PayPal, PayGlocal) to provide robust payment routing, driving an 11% rise in gift card usage and a 4.36% increase in order volumes.",
+      "challenges": [
+        {
+          "title": "Handling Payment Failure Retries",
+          "body": "Network drops and gateway downtimes caused inconsistent order statuses. Solved by implementing an idempotent polling mechanism and a queue-based retry runner to reconcile payment states asynchronously."
+        }
+      ],
+      "achievements": [
+        "Supported 5+ concurrent payment processors seamlessly.",
+        "Boosted gift card utilization by 11% through smoother retry experiences."
+      ],
+      "stack": ["Node.js", "Express.js", "Razorpay", "Cashfree", "PayPal", "Mongoose"]
+    },
+    {
+      "id": 2,
+      "name": "Rule-Based Promo & Coupon Engine",
+      "category": "backend",
+      "context": "Node.js / Express / Dashboard / Targeting",
+      "tagline": "Designed a rule-based discounting engine supporting 10+ combinable discount types.",
+      "description": "Architected a flexible and robust promo engine supporting 10+ combinable discount types (designer-specific, timer, freebie, region, category, platform, employee, clearance, user-type) with country and device targeting rules. Paired it with an elegant Coupon Management Dashboard, lifting coupon usage by 7% and overall sales by 5%.",
+      "challenges": [
+        {
+          "title": "Discount Combination Conflicts",
+          "body": "Combining multiple coupons could lead to negative prices or unintended discount stacking. Solved by implementing a precedence graph execution algorithm to evaluate coupon rules deterministically."
+        }
+      ],
+      "achievements": [
+        "Supported 10+ different discounting rules (freebies, tiers, timers).",
+        "Landed a 7% increase in coupon redemption rate with country-targeted rules."
+      ],
+      "stack": ["Node.js", "Express.js", "MongoDB", "MySQL", "Sequelize"]
+    },
+    {
+      "id": 3,
+      "name": "Checkout Microservice Re-engineering (Aza V2)",
+      "category": "fullstack",
+      "context": "Redis / AWS SQS / AWS Lambda / Microservices",
+      "tagline": "Re-engineered the checkout microservice for high throughput, cutting response times by 40%.",
+      "description": "Refactored the legacy cart checkout system into a modern microservice using Redis caching, AWS SQS, and AWS Lambda to process cart items, address records, and payment profiles in parallel. Achieved a 40% reduction in API response times and a 30% reduction in overall checkout completion times.",
+      "challenges": [
+        {
+          "title": "State Consistency in Parallel Processing",
+          "body": "Processing cart, shipping, and payment in parallel could cause race conditions. Handled by introducing lock steps in Redis and publishing transactional events to AWS SQS queues."
+        }
+      ],
+      "achievements": [
+        "Cut API latency by 40% under peak load conditions.",
+        "Decreased shopping cart checkout drop-off rate by 30%."
+      ],
+      "stack": ["Node.js", "Redis", "AWS Lambda", "AWS SQS", "React"]
+    },
+    {
+      "id": 4,
+      "name": "Real-Time Lead & Session Dashboard",
+      "category": "fullstack",
+      "context": "WebSockets / Telemetry / Node.js / React",
+      "tagline": "Built a real-time lead analytics dashboard surfacing live user sessions and behavioral tags.",
+      "description": "Developed a real-time tracking dashboard that captures live page views, durations, and session events. Applies behavioral tags (high-value visitor, repeat visitor, exclusive shopper) and maps them to ticket sizes to support sales conversion tracking.",
+      "challenges": [
+        {
+          "title": "High WebSocket Event Volume",
+          "body": "Streaming raw cursor positions and events saturated client viewports. Designed an adaptive debouncing handler on the client side and a Redis-backed log buffering middleware."
+        }
+      ],
+      "achievements": [
+        "Secured low-latency updates under 50ms across the supervisor portal.",
+        "Provided actionable telemetry tagging that assisted sales conversion tracking."
+      ],
+      "stack": ["React", "Node.js", "WebSockets", "CSS Grid", "Chart.js"]
+    }
+  ]
+}
