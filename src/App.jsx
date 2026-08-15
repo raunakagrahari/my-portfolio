@@ -302,7 +302,7 @@ Core Stack:   ${resumeData.skills.backend.slice(0, 4).join(', ')} / ${resumeData
       <header className={isScrolled ? 'scrolled' : ''}>
         <div className="nav-container">
           <a href="#" className="nav-logo">
-            <img src="/icon.svg" alt="R Logo" className="logo-img" />
+            <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="R Logo" className="logo-img" />
             <span className="logo-text">raunak<span>.dev</span></span>
           </a>
 
@@ -349,10 +349,10 @@ Core Stack:   ${resumeData.skills.backend.slice(0, 4).join(', ')} / ${resumeData
                 <span className="theme-btn-label">Resume</span>
               </button>
               <div className={`theme-dropdown ${isResumeDropdownOpen ? 'open' : ''}`} aria-hidden={!isResumeDropdownOpen}>
-                <a href="/mr.Raunak%20agrahari%20202607.pdf" target="_blank" rel="noopener noreferrer" className="theme-opt" onClick={() => setIsResumeDropdownOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: '100%', textDecoration: 'none' }}>
+                <a href={`${import.meta.env.BASE_URL}mr.Raunak%20agrahari%20202607.pdf`} target="_blank" rel="noopener noreferrer" className="theme-opt" onClick={() => setIsResumeDropdownOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: '100%', textDecoration: 'none' }}>
                   <span>👁️</span> View CV
                 </a>
-                <a href="/mr.Raunak%20agrahari%20202607.pdf" download="mr.Raunak agrahari 202607.pdf" className="theme-opt" onClick={() => setIsResumeDropdownOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: '100%', textDecoration: 'none' }}>
+                <a href={`${import.meta.env.BASE_URL}mr.Raunak%20agrahari%20202607.pdf`} download="mr.Raunak agrahari 202607.pdf" className="theme-opt" onClick={() => setIsResumeDropdownOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: '100%', textDecoration: 'none' }}>
                   <span>📥</span> Download CV
                 </a>
               </div>
@@ -708,7 +708,7 @@ Core Stack:   ${resumeData.skills.backend.slice(0, 4).join(', ')} / ${resumeData
                     <span className="card-arrow">→</span>
                   </a>
 
-                  <a href="/mr.Raunak%20agrahari%20202607.pdf" target="_blank" rel="noopener noreferrer" className="contact-card group">
+                  <a href={`${import.meta.env.BASE_URL}mr.Raunak%20agrahari%20202607.pdf`} target="_blank" rel="noopener noreferrer" className="contact-card group">
                     <div className="card-icon">👁️</div>
                     <div className="card-content">
                       <h4>View Résumé</h4>
@@ -717,7 +717,7 @@ Core Stack:   ${resumeData.skills.backend.slice(0, 4).join(', ')} / ${resumeData
                     <span className="card-arrow">→</span>
                   </a>
 
-                  <a href="/mr.Raunak%20agrahari%20202607.pdf" download="mr.Raunak agrahari 202607.pdf" className="contact-card group">
+                  <a href={`${import.meta.env.BASE_URL}mr.Raunak%20agrahari%20202607.pdf`} download="mr.Raunak agrahari 202607.pdf" className="contact-card group">
                     <div className="card-icon">📥</div>
                     <div className="card-content">
                       <h4>Download Résumé</h4>
