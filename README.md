@@ -50,35 +50,3 @@ To compile the static React files into HTML, JS, and CSS for web servers:
 npm run build
 ```
 The compiled, optimized site is generated inside the `dist/` directory.
-
----
-
-## 📦 How to Deploy on GitHub Pages
-
-### Option A: Standard GitHub Deployment Branch (Simplified)
-1. Install the `gh-pages` npm utility:
-   ```bash
-   npm install gh-pages --save-dev
-   ```
-2. Open `package.json` and add a `homepage` property and deploy scripts:
-   ```json
-   "homepage": "https://<your-username>.github.io/<your-repository-name>",
-   "scripts": {
-     "predeploy": "npm run build",
-     "deploy": "gh-pages -d dist"
-   }
-   ```
-3. Run the deploy script to publish the built app:
-   ```bash
-   npm run deploy
-   ```
-
-### Option B: Deploying with GitHub Actions
-1. Push your repository to GitHub.
-2. Go to **Settings** -> **Pages** in your GitHub repository interface.
-3. Under **Build and deployment** -> **Source**, select **GitHub Actions**.
-4. GitHub will automatically detect the Vite template and suggest the "Vite Pages deployment" workflow. Enable it.
-5. In your GitHub repository **Settings** -> **Secrets and variables** -> **Actions**, add a new **Repository Variable**:
-   * **Name:** `VITE_WEB3FORMS_KEY`
-   * **Value:** *(Your Web3Forms access key)*
-   This will secure your email system during compilation.
