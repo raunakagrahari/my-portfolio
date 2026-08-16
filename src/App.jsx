@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import resumeData from './data/resume.json';
 
-const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY_HERE';
-
 // Map skills helper for category display
 const mapSkills = (skillsObj) => {
   const mappers = {
@@ -63,7 +61,6 @@ export default function App() {
   const [contactName, setContactName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [contactMessage, setContactMessage] = useState('');
-  const [isSubmittingContact, setIsSubmittingContact] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
 
@@ -245,45 +242,23 @@ Core Stack:   ${resumeData.skills.backend.slice(0, 4).join(', ')} / ${resumeData
     setTerminalHistory([...newHistory, { type: 'output', text: outputText }]);
   };
 
-  // Contact Form submit
-  const handleContactSubmit = async (e) => {
+  // Contact Form submit using mailto
+  const handleContactSubmit = (e) => {
     e.preventDefault();
     if (!contactName || !contactEmail || !contactMessage) return;
 
-    if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
-      alert('Please configure your Web3Forms access key (VITE_WEB3FORMS_KEY in your env) to send messages.');
-      return;
-    }
+    const emailTo = resumeData.email || 'raunakagrahari15@gmail.com';
+    const subject = encodeURIComponent(`Portfolio Message from ${contactName}`);
+    const body = encodeURIComponent(`Name: ${contactName}\nEmail: ${contactEmail}\n\nMessage:\n${contactMessage}`);
 
-    setIsSubmittingContact(true);
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          name: contactName,
-          email: contactEmail,
-          message: contactMessage,
-          subject: `Portfolio Message from ${contactName}`
-        })
-      });
+    // Open default mail client
+    window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
 
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setContactName('');
-        setContactEmail('');
-        setContactMessage('');
-        setShowSuccessModal(true);
-      } else {
-        alert(data.message || 'Failed to send message. Please try again.');
-      }
-    } catch (err) {
-      alert('Network issue. Could not reach Web3Forms. Please try again.');
-    } finally {
-      setIsSubmittingContact(false);
-    }
+    // Clear inputs and show success modal
+    setContactName('');
+    setContactEmail('');
+    setContactMessage('');
+    setShowSuccessModal(true);
   };
 
   // Filter projects helper
@@ -766,9 +741,8 @@ Core Stack:   ${resumeData.skills.backend.slice(0, 4).join(', ')} / ${resumeData
                     <label htmlFor="contact-message">Message Details</label>
                     <span className="input-highlight"></span>
                   </div>
-                  <button type="submit" className="btn btn-primary btn-full" disabled={isSubmittingContact}>
-                    <span className="btn-text">{isSubmittingContact ? 'Submitting...' : 'Submit Message'}</span>
-                    {isSubmittingContact && <span className="btn-spinner animate-spin" style={{ display: 'inline-block', marginLeft: '8px' }}>⏳</span>}
+                  <button type="submit" className="btn btn-primary btn-full">
+                    <span className="btn-text">Submit Message</span>
                   </button>
                 </form>
               </div>
