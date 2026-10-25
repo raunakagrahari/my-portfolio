@@ -12,6 +12,7 @@
     "databases": ["MySQL", "PostgreSQL", "MongoDB", "DynamoDB", "Redis", "Sequelize", "Mongoose"],
     "cloudDevOps": ["AWS (Lambda, SQS, S3, EC2, RDS, CloudWatch)", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Git"],
     "security": ["JWT", "OAuth 2.0", "Payment Gateway Integrations (Razorpay, Cashfree, PayU, PayPal, PayGlocal)"],
+    "mobile": ["Android", "Google Play Console", "Offline-First Storage", "Haptics & Interactive UX"],
     "tools": ["Jest", "Mocha", "Postman", "Swagger", "NPM"]
   },
   "experience": [
@@ -130,6 +131,33 @@
         "Provided actionable telemetry tagging that assisted sales conversion tracking."
       ],
       "stack": ["React", "Node.js", "WebSockets", "CSS Grid", "Chart.js"]
+    },
+    {
+      "id": 5,
+      "name": "Count Mate – Tally Counter",
+      "category": "mobile",
+      "context": "Android / Mobile App / Google Play",
+      "tagline": "Fast, elegant & customizable multi-counter Android app published on Google Play with haptic feedback, custom targets, and lap logs.",
+      "description": "Count Mate is a modern, sleek tally counter app published on Google Play. Designed with glassmorphism aesthetics and distraction-free usability, it empowers users to track anything effortlessly—from fitness reps, workouts, and daily habits to inventory tallies, event attendees, and devotional chanting. Features instant multi-counter management, custom step increments, goal limits, responsive haptic/audio feedback, AMOLED battery-saving dark themes, and 100% offline, privacy-first local persistence.",
+      "playStore": "https://play.google.com/store/apps/details?id=com.antigravity.tally_counter&hl=en_IN",
+      "icon": "count-mate-icon.png",
+      "badge": "Google Play Live",
+      "challenges": [
+        {
+          "title": "Low-Latency Haptic & Audio Feedback",
+          "body": "Maintaining instantaneous tactile response across rapid consecutive taps without dropping frames or spiking battery drain. Solved through optimized event dispatching and hardware vibration controller tuning."
+        },
+        {
+          "title": "Safe Data Persistence & History Tracking",
+          "body": "Users risk losing tally state during accidental resets or app lifecycle changes. Engineered persistent local state, safe reset confirmations, undo capability, and a timestamped lap history audit trail."
+        }
+      ],
+      "achievements": [
+        "Published and live on the Google Play Store with 100% offline functionality and zero data collection.",
+        "Built customizable multi-counter workflows with custom step values, goal targets, and lap logs.",
+        "Implemented AMOLED dark & light glassmorphic themes designed for low battery usage."
+      ],
+      "stack": ["Android", "Mobile App", "Google Play", "Glassmorphism UI", "Haptics", "Offline Storage"]
     }
   ]
 }

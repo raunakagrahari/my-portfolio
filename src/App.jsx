@@ -10,7 +10,8 @@ const mapSkills = (skillsObj) => {
     backend: { category: "Backend & APIs", note: "High-performance services and microservice architectures" },
     databases: { category: "Databases & Cache", note: "Relational, document, and session data layers" },
     cloudDevOps: { category: "Cloud & DevOps", note: "Serverless functions, containers, and deployment tracking" },
-    security: { category: "Security & Tools", note: "Authentication layers, payment gateways, and API specs" }
+    security: { category: "Security & Tools", note: "Authentication layers, payment gateways, and API specs" },
+    mobile: { category: "Mobile Apps & Client", note: "Android applications, offline persistence & interactive UX" }
   };
 
   return Object.keys(mappers)
@@ -201,7 +202,7 @@ Tools:     Jest, Mocha, Postman, Swagger, NPM`;
           outputText = `[Project details: ${p.name}]
 Tagline:  ${p.tagline}
 Stack:    ${p.stack.join(', ')}
-Details:  ${p.description}
+${p.playStore ? `Google Play: ${p.playStore}\n` : ''}Details:  ${p.description}
 Achievements:
 ${(p.achievements || []).map(a => ` - ${a}`).join('\n')}`;
         } else {
@@ -218,8 +219,9 @@ ${(p.achievements || []).map(a => ` - ${a}`).join('\n')}`;
 2. Rule-Based Promo & Coupon Engine (Node.js, Express, Targeting)
 3. Checkout Microservice Re-engineering (Redis, AWS SQS, AWS Lambda)
 4. Real-Time Lead & Session Dashboard (WebSockets, Telemetry, React)
+5. Count Mate – Tally Counter (Android, Mobile App, Google Play)
 
-Type 'projects <number>' (e.g. 'projects 1') for specific project details.`;
+Type 'projects <number>' (e.g. 'projects 5') for specific project details.`;
         }
       }
     } else if (primaryCmd === 'stats') {
@@ -601,10 +603,10 @@ Core Stack:   ${resumeData.skills.backend.slice(0, 4).join(', ')} / ${resumeData
                 Full-Stack
               </button>
               <button 
-                className={`filter-btn ${activeProjectFilter === 'frontend' ? 'active' : ''}`}
-                onClick={() => setActiveProjectFilter('frontend')}
+                className={`filter-btn ${activeProjectFilter === 'mobile' ? 'active' : ''}`}
+                onClick={() => setActiveProjectFilter('mobile')}
               >
-                Frontend & Games
+                Mobile Apps
               </button>
             </div>
 
@@ -612,13 +614,39 @@ Core Stack:   ${resumeData.skills.backend.slice(0, 4).join(', ')} / ${resumeData
               {filteredProjects.map((project) => (
                 <div 
                   key={project.id} 
-                  className="project-card"
+                  className={`project-card ${project.playStore ? 'project-card-app' : ''}`}
                   onClick={() => setSelectedProject(project)}
                 >
                   <div className="project-meta-line">
                     <span className="project-context">{project.context}</span>
+                    {project.playStore && (
+                      <a 
+                        href={project.playStore} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="playstore-pill-badge"
+                        onClick={(e) => e.stopPropagation()}
+                        title="Open on Google Play"
+                      >
+                        <svg className="playstore-svg-icon" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                          <path d="M3.609 1.814L13.792 12 3.61 22.186a2.03 2.03 0 0 1-.61-1.472V3.286c0-.58.23-1.11.609-1.472zM15.207 13.414l2.457 2.457-11.433 6.471 8.976-8.928zm0-2.828L6.231 1.658l11.433 6.471-2.457 2.457zm1.414 1.414l3.186 1.805a1.5 1.5 0 0 0 0-2.61L16.621 12z"/>
+                        </svg>
+                        <span>Google Play Live</span>
+                      </a>
+                    )}
                   </div>
-                  <h3 className="project-name">{project.name}</h3>
+
+                  <div className="project-title-row">
+                    {project.icon && (
+                      <img 
+                        src={`${import.meta.env.BASE_URL}${project.icon}`} 
+                        alt="" 
+                        className="project-icon-thumb" 
+                      />
+                    )}
+                    <h3 className="project-name">{project.name}</h3>
+                  </div>
+
                   <p className="project-tagline">{project.tagline}</p>
                   <div className="project-stack-tags">
                     {project.stack.slice(0, 4).map((tech, i) => (
@@ -784,8 +812,37 @@ Core Stack:   ${resumeData.skills.backend.slice(0, 4).join(', ')} / ${resumeData
           <div className="modal-wrapper">
             <button className="modal-close" onClick={() => setSelectedProject(null)} aria-label="Close dialog">✕</button>
             <div className="modal-content">
-              <h3 className="modal-project-title">{selectedProject.name}</h3>
-              <p className="modal-project-context">{selectedProject.context}</p>
+              <div className="modal-header-banner">
+                <div className="modal-title-group">
+                  {selectedProject.icon && (
+                    <img 
+                      src={`${import.meta.env.BASE_URL}${selectedProject.icon}`} 
+                      alt="" 
+                      className="modal-icon-thumb" 
+                    />
+                  )}
+                  <div>
+                    <h3 className="modal-project-title">{selectedProject.name}</h3>
+                    <p className="modal-project-context">{selectedProject.context}</p>
+                  </div>
+                </div>
+
+                {selectedProject.playStore && (
+                  <div className="modal-action-row">
+                    <a 
+                      href={selectedProject.playStore} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn btn-primary playstore-cta-btn"
+                    >
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M3.609 1.814L13.792 12 3.61 22.186a2.03 2.03 0 0 1-.61-1.472V3.286c0-.58.23-1.11.609-1.472zM15.207 13.414l2.457 2.457-11.433 6.471 8.976-8.928zm0-2.828L6.231 1.658l11.433 6.471-2.457 2.457zm1.414 1.414l3.186 1.805a1.5 1.5 0 0 0 0-2.61L16.621 12z"/>
+                      </svg>
+                      <span>Get on Google Play</span>
+                    </a>
+                  </div>
+                )}
+              </div>
               
               <div className="project-detail-section">
                 <h4 className="project-section-title">Overview</h4>
